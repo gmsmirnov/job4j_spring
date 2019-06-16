@@ -1,5 +1,6 @@
 package ru.job4j.gsmirnov.storage;
 
+import org.springframework.stereotype.Component;
 import ru.job4j.gsmirnov.models.User;
 
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @version 1.0
  * @since 15/06/2019
  */
+@Component
 public class MemoryStorage implements Storage {
     /**
      * The thread-safe memory storage.
