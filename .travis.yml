@@ -1,0 +1,28 @@
+# Language
+language: java
+# User-mode
+sudo: false
+
+# JDK
+jdk:
+- openjdk11
+
+# JaCoCo statistics
+# service: https://codecov.io/
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+
+cache:
+  directories:
+  - $HOME/.m2
+
+# Sends e-mail if assembly success or fail.
+notifications:
+  email:
+    recipients:
+    - artress@ngs.ru
+    on_success: always # default: change
+    on_failure: always # default: always
+
+env:
+  global:
