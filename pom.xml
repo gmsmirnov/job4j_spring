@@ -63,6 +63,26 @@
             <artifactId>spring-beans</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.1.8.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.6.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -111,7 +131,43 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <changeLogFile>${basedir}/db/master.xml</changeLogFile>
+                    <url>${db.url}</url>
+                    <driver>${db.driver}</driver>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>avito</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/avito?serverTimezone=Asia/Novosibirsk</db.url>
+                <db.username>root</db.username>
+                <db.password>mysql</db.password>
+                <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

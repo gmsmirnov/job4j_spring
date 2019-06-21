@@ -26,3 +26,10 @@ notifications:
 
 env:
   global:
+    CODECOV_TOKEN=c5203570-cc7b-4c25-84a5-d8df91abcd4a
+
+# Start MySQL
+services:
+- mysql
+before_install:
+- mysql -e 'CREATE DATABASE avito;'

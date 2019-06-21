@@ -21,6 +21,14 @@ public class User {
     private String password;
 
     /**
+     *
+     */
+    public User() {
+        this.login = "";
+        this.password = "";
+    }
+
+    /**
      * User-constructor. Creates user-object with the specified parameters.
      *
      * @param login the specified login.

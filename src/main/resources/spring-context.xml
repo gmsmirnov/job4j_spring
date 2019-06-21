@@ -7,10 +7,16 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--<bean id="memory" class="ru.job4j.gsmirnov.storage.MemoryStorage"/>
+    <bean id="jdbc" class="ru.job4j.gsmirnov.storage.JdbcStorage">
+        <constructor-arg name="url" value="jdbc:mysql://localhost:3306/avito?serverTimezone=Asia/Novosibirsk"/>
+        <constructor-arg name="username" value="root"/>
+        <constructor-arg name="password" value="mysql"/>
+        <constructor-arg name="driver" value="com.mysql.cj.jdbc.Driver"/>
+    </bean>
+
     <bean id="storage" class="ru.job4j.gsmirnov.storage.UserStorage">
-        <constructor-arg name="storage" ref="memory"/>
-    </bean>-->
+        <constructor-arg name="storage" ref="jdbc"/>
+    </bean>
     
-    <context:component-scan base-package="ru.job4j.gsmirnov.storage"/>
+    <!--<context:component-scan base-package="ru.job4j.gsmirnov.storage"/>-->
 </beans>
