@@ -32,4 +32,4 @@ env:
 services:
 - mysql
 before_install:
-- mysql -e 'CREATE DATABASE avito;'
+- mysql -u root  -e 'CREATE DATABASE avito;'
