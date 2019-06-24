@@ -63,10 +63,28 @@
             <artifactId>spring-beans</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.1.8.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.1.8.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>5.1.8.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
 
@@ -156,11 +174,9 @@
     </build>
 
     <profiles>
+
         <profile>
             <id>avito</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <db.url>jdbc:mysql://localhost:3306/avito?serverTimezone=Asia/Novosibirsk</db.url>
                 <db.username>root</db.username>
@@ -168,6 +184,20 @@
                 <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
             </properties>
         </profile>
+
+        <profile>
+            <id>avito_travis</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/avito?serverTimezone=Asia/Novosibirsk</db.url>
+                <db.username>root</db.username>
+                <db.password></db.password>
+                <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
+            </properties>
+        </profile>
+
     </profiles>
 
 </project>
