@@ -2,6 +2,7 @@ package ru.job4j.gsmirnov.storage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.job4j.gsmirnov.models.User;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class UserStorage {
      *
      * @param storage the specified inside storage.
      */
+    @Autowired
     public UserStorage(Storage storage) {
         this.storage = storage;
         LOG.info(String.format("New empty User Storage created. The inner architecture is: '%s'.", storage.getClass()));
